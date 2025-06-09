@@ -75,6 +75,6 @@ namespace JobPortal.Infrastructure.Global
         [JsonProperty("searchString")]
         public string SearchString { get; set; } = string.Empty;
 
-        public string FormattedSearchString() => (SearchString ?? string.Empty).ToLower(CultureInfo.InvariantCulture).Replace(" ", string.Empty);
+        public string FormattedSearchString() => SearchString.ToLower().Replace(" ", string.Empty);
     }
 }

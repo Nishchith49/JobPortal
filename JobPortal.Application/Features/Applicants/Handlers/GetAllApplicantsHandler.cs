@@ -19,7 +19,6 @@ namespace JobPortal.Application.Features.Applicants.Handlers
         public async Task<PagedResponse<List<ApplicantModel>>> Handle(GetAllApplicantsQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Applicants
-                                       .AsNoTracking()
                                        .GroupBy(x => 1)
                                        .Select(x => new PagedResponseWithQuery<List<ApplicantModel>>
                                        {

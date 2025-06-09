@@ -19,7 +19,6 @@ namespace JobPortal.Application.Features.ClientCompanies.Handlers
         public async Task<ServiceResponse<ClientCompanyModel>> Handle(GetClientCompanyByIdQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.ClientCompanies
-                                       .AsNoTracking()
                                        .Select(x => new ClientCompanyModel
                                        {
                                            Id = x.Id,

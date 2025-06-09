@@ -19,7 +19,6 @@ namespace JobPortal.Application.Features.Jobs.Handlers
         public async Task<ServiceResponse<JobModel>> Handle(GetJobByIdQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Jobs
-                                       .AsNoTracking()
                                        .Select(x => new JobModel
                                        {
                                            Id = x.Id,

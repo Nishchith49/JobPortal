@@ -19,7 +19,12 @@ namespace JobPortal.Application.Features.Jobs.Handlers
         public async Task<PagedResponse<List<JobModel>>> Handle(GetAllJobsQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Jobs
-                                       .AsNoTracking()
+                                       .Where(x => string.IsNullOrWhiteSpace(request.FormattedSearchString()) ||
+                                                   x.Title.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
+                                                   x.SkillsRequired.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
+                                                   x.Location.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
+                                                   x.JobType.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
+                                                   x.ExperienceRequired.ToString().Replace(" ", string.Empty).Contains(request.FormattedSearchString()))
                                        .GroupBy(x => 1)
                                        .Select(x => new PagedResponseWithQuery<List<JobModel>>
                                        {
