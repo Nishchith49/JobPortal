@@ -25,6 +25,7 @@ namespace JobPortal.Domain.Entities
 
         public static void SeedAdminUser(this ModelBuilder modelBuilder)
         {
+            var date = new DateTime(2025, 06, 06);
             modelBuilder.Entity<User>().HasData(new User
             {
                 Id = AdminUserId,
@@ -33,8 +34,8 @@ namespace JobPortal.Domain.Entities
                 UserName = "Admin",
                 Password = "p7D/ukHhRwG3KDJKcbfMlJqrZRNEeyxW1wKAFWbTHbI=",
                 IsActive = true,
-                CreatedDate = DateTime.UtcNow,
-                UpdatedDate = DateTime.UtcNow
+                CreatedDate = date,
+                UpdatedDate = date
             });
 
             modelBuilder.Entity<UserRole>().HasData(new UserRole

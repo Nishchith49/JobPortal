@@ -33,6 +33,7 @@ namespace JobPortal.Application.Features.Jobs.Handlers
             entity.ExperienceRequired = request.ExperienceRequired;
             entity.JobType = request.JobType;
             entity.Salary = request.Salary;
+            entity.ExpiryDate = request.ExpiryDate;
             entity.ClientCompanyId = request.ClientCompanyId;
             entity.UpdatedDate = DateTime.UtcNow;
 

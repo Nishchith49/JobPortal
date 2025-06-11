@@ -31,6 +31,9 @@ namespace JobPortal.Domain.Entities
         [Column("salary")]
         public decimal Salary { get; set; }
 
+        [Column("expiry_date")]
+        public DateTime ExpiryDate { get; set; }
+
         [Column("client_company_id")]
         public Guid ClientCompanyId { get; set; }
 

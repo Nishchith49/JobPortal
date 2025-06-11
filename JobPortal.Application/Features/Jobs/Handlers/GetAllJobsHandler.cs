@@ -19,6 +19,9 @@ namespace JobPortal.Application.Features.Jobs.Handlers
         public async Task<PagedResponse<List<JobModel>>> Handle(GetAllJobsQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Jobs
+                                       .Where(x => string.IsNullOrWhiteSpace(request.Skills) || x.SkillsRequired.Contains(x.SkillsRequired))
+                                       .Where(x => string.IsNullOrWhiteSpace(request.Location) || x.Location.Contains(request.Location))
+                                       .Where(x => string.IsNullOrWhiteSpace(request.JobType) || x.JobType.Contains(request.JobType))
                                        .Where(x => string.IsNullOrWhiteSpace(request.FormattedSearchString()) ||
                                                    x.Title.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
                                                    x.SkillsRequired.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
@@ -41,6 +44,7 @@ namespace JobPortal.Application.Features.Jobs.Handlers
                                                Salary = x.Salary,
                                                IsActive = x.IsActive,
                                                PostedDate = x.CreatedDate,
+                                               ExpiryDate = x.ExpiryDate,
                                                LastUpdatedDate = x.UpdatedDate,
                                                ClientCompanyId = x.ClientCompanyId
                                            })

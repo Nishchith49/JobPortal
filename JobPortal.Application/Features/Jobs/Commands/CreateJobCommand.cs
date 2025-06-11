@@ -27,6 +27,9 @@ namespace JobPortal.Application.Features.Jobs.Commands
         [JsonProperty("salary")]
         public decimal Salary { get; set; }
 
+        [JsonProperty("expiryDate")]
+        public DateTime ExpiryDate { get; set; }
+
         [JsonProperty("clientCompanyId")]
         public Guid ClientCompanyId { get; set; }
     }

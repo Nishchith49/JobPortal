@@ -40,6 +40,7 @@ namespace JobPortal.Application.Features.Jobs.Handlers
                 ExperienceRequired = request.ExperienceRequired,
                 JobType = request.JobType,
                 Salary = request.Salary,
+                ExpiryDate = request.ExpiryDate,
                 ClientCompanyId = request.ClientCompanyId
             };
 

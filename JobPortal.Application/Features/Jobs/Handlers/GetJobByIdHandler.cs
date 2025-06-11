@@ -31,6 +31,7 @@ namespace JobPortal.Application.Features.Jobs.Handlers
                                            Salary = x.Salary,
                                            IsActive = x.IsActive,
                                            PostedDate = x.CreatedDate,
+                                           ExpiryDate = x.ExpiryDate,
                                            LastUpdatedDate = x.UpdatedDate,
                                            ClientCompanyId = x.ClientCompanyId
                                        })
