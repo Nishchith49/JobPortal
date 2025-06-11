@@ -19,9 +19,12 @@ namespace JobPortal.Application.Features.Jobs.Handlers
         public async Task<PagedResponse<List<JobModel>>> Handle(GetAllJobsQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Jobs
-                                       .Where(x => string.IsNullOrWhiteSpace(request.Skills) || x.SkillsRequired.Contains(request.Skills))
-                                       .Where(x => string.IsNullOrWhiteSpace(request.Location) || x.Location.Contains(request.Location))
-                                       .Where(x => string.IsNullOrWhiteSpace(request.JobType) || x.JobType.Contains(request.JobType))
+                                       .Where(x => string.IsNullOrWhiteSpace(request.Skills) || 
+                                                   x.SkillsRequired.Replace(" ", string.Empty).ToLower().Contains(request.Skills.Replace(" ", string.Empty).ToLower()))
+                                       .Where(x => string.IsNullOrWhiteSpace(request.Location) || 
+                                                   x.Location.Replace(" ", string.Empty).ToLower().Contains(request.Location.Replace(" ", string.Empty.ToLower())))
+                                       .Where(x => string.IsNullOrWhiteSpace(request.JobType) || 
+                                                   x.JobType.Replace(" ", string.Empty).ToLower().Contains(request.JobType.Replace(" ", string.Empty).ToLower()))
                                        .Where(x => string.IsNullOrWhiteSpace(request.FormattedSearchString()) ||
                                                    x.Title.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
                                                    x.SkillsRequired.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
