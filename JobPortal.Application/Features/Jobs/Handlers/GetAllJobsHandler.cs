@@ -19,7 +19,7 @@ namespace JobPortal.Application.Features.Jobs.Handlers
         public async Task<PagedResponse<List<JobModel>>> Handle(GetAllJobsQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Jobs
-                                       .Where(x => string.IsNullOrWhiteSpace(request.Skills) || x.SkillsRequired.Contains(x.SkillsRequired))
+                                       .Where(x => string.IsNullOrWhiteSpace(request.Skills) || x.SkillsRequired.Contains(request.Skills))
                                        .Where(x => string.IsNullOrWhiteSpace(request.Location) || x.Location.Contains(request.Location))
                                        .Where(x => string.IsNullOrWhiteSpace(request.JobType) || x.JobType.Contains(request.JobType))
                                        .Where(x => string.IsNullOrWhiteSpace(request.FormattedSearchString()) ||
