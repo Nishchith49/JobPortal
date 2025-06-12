@@ -5,7 +5,6 @@ using JobPortal.Infrastructure.Concrete.Services;
 using JobPortal.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
@@ -41,7 +40,7 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "JobPortal",
         Version = "1.0",
-        Description = "JobPortal using ASP.NET CORE 8",
+        Description = "JobPortal using ASP.NET CORE 9",
         Contact = new OpenApiContact
         {
             Name = "",
