@@ -121,7 +121,7 @@ app.UseHsts();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint(".././swagger/JobPortal/swagger.json", "JobPortal");
+    c.SwaggerEndpoint("/swagger/JobPortal/swagger.json", "JobPortal");
     c.DocExpansion(DocExpansion.None);
     c.DefaultModelsExpandDepth(-1);
     c.DisplayRequestDuration();
