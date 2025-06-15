@@ -1,4 +1,5 @@
 ﻿using JobPortal.Application.Features.Accounts.Commands;
+using JobPortal.Application.Features.Accounts.Models;
 using JobPortal.Infrastructure.Global;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,7 @@ namespace JobPortal.API.Controllers
 
 
         [HttpPost("[action]")]
-        public async Task<APIResponse> Login(LoginCommand command)
+        public async Task<ServiceResponse<LoginResponse>> Login(LoginCommand command)
         {
             return await _mediator.Send(command);
         }
