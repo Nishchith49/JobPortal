@@ -15,9 +15,9 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 var env = builder.Environment.EnvironmentName ?? "Development";
-var defaultPort = env.Equals("QA", StringComparison.CurrentCultureIgnoreCase) ? 5001 : env.Equals("Production", StringComparison.CurrentCultureIgnoreCase) ? 5002 : 5000;
-var port = Environment.GetEnvironmentVariable("PORT") ?? defaultPort.ToString();
-builder.WebHost.UseUrls($"http://localhost:{port}");
+//var defaultPort = env.Equals("QA", StringComparison.CurrentCultureIgnoreCase) ? 5001 : env.Equals("Production", StringComparison.CurrentCultureIgnoreCase) ? 5002 : 5000;
+//var port = Environment.GetEnvironmentVariable("PORT") ?? defaultPort.ToString();
+//builder.WebHost.UseUrls($"http://localhost:{port}");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
