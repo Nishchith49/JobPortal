@@ -4,7 +4,7 @@ using JobPortal.Infrastructure.Global;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace JobPortal.API.Controllers
+namespace JobPortal.API.Controllers.Common
 {
     [Route("api/[controller]")]
     [ApiController]

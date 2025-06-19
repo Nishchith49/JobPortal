@@ -6,11 +6,12 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace JobPortal.API.Controllers
+namespace JobPortal.API.Controllers.Admin
 {
+    [Route("api/admin/[controller]")]
     [ApiController]
-    [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
+    [ApiExplorerSettings(GroupName = "JobPortal Admin")]
     public class ClientCompaniesController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;

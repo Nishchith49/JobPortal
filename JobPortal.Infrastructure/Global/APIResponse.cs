@@ -70,7 +70,7 @@ namespace JobPortal.Infrastructure.Global
         public int PageIndex { get; set; } = 0;
 
         [JsonProperty("pageSize")]
-        public int PageSize { get; set; } = 100;
+        public int PageSize { get; set; } = 10;
 
         [JsonProperty("searchString")]
         public string SearchString { get; set; } = string.Empty;

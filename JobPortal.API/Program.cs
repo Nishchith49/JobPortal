@@ -14,6 +14,11 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var env = builder.Environment.EnvironmentName ?? "Development";
+var defaultPort = env.Equals("QA", StringComparison.CurrentCultureIgnoreCase) ? 5001 : env.Equals("Production", StringComparison.CurrentCultureIgnoreCase) ? 5002 : 5000;
+var port = Environment.GetEnvironmentVariable("PORT") ?? defaultPort.ToString();
+builder.WebHost.UseUrls($"http://localhost:{port}");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseMySql(
@@ -36,9 +41,20 @@ builder.Services.AddControllers()
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("JobPortal", new OpenApiInfo
+    c.SwaggerDoc("JobPortal Admin", new OpenApiInfo
     {
-        Title = "JobPortal",
+        Title = $"JobPortal Admin {env}",
+        Version = "1.0",
+        Description = "JobPortal using ASP.NET CORE 9",
+        Contact = new OpenApiContact
+        {
+            Name = "",
+            Email = "",
+        },
+    });
+    c.SwaggerDoc("JobPortal User", new OpenApiInfo
+    {
+        Title = $"JobPortal User {env}",
         Version = "1.0",
         Description = "JobPortal using ASP.NET CORE 9",
         Contact = new OpenApiContact
@@ -121,7 +137,10 @@ app.UseHsts();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/JobPortal/swagger.json", "JobPortal");
+    c.SwaggerEndpoint("/swagger/JobPortal Admin/swagger.json", "Admin API");
+    c.SwaggerEndpoint("/swagger/JobPortal User/swagger.json", "User API");
+    c.RoutePrefix = "swagger";
+    //c.SwaggerEndpoint("/swagger/JobPortal/swagger.json", "JobPortal");
     c.DocExpansion(DocExpansion.None);
     c.DefaultModelsExpandDepth(-1);
     c.DisplayRequestDuration();
