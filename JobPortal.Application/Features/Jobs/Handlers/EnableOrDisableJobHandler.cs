@@ -5,7 +5,7 @@ using MediatR;
 
 namespace JobPortal.Application.Features.Jobs.Handlers
 {
-    internal class EnableOrDisableJobHandler : IRequestHandler<EnabeOrDisableJobCommand, APIResponse>
+    internal class EnableOrDisableJobHandler : IRequestHandler<EnableOrDisableJobCommand, APIResponse>
     {
         private readonly ApplicationDbContext _context;
 
@@ -14,7 +14,7 @@ namespace JobPortal.Application.Features.Jobs.Handlers
             _context = context;
         }
 
-        public async Task<APIResponse> Handle(EnabeOrDisableJobCommand request, CancellationToken cancellationToken)
+        public async Task<APIResponse> Handle(EnableOrDisableJobCommand request, CancellationToken cancellationToken)
         {
             var entity = await _context.Jobs.FindAsync(request.Id);
             if (entity == null)

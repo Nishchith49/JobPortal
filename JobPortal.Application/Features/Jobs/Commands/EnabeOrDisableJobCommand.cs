@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace JobPortal.Application.Features.Jobs.Commands
 {
-    public class EnabeOrDisableJobCommand : IRequest<APIResponse>
+    public class EnableOrDisableJobCommand : IRequest<APIResponse>
     {
         [JsonProperty("id")]
         public Guid Id { get; set; }
