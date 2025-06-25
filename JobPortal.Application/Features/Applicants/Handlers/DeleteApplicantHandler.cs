@@ -1,4 +1,4 @@
-using JobPortal.AJobPortal.Application.Features.Applicants.Commands;
+using JobPortal.Application.Features.Applicants.Commands;
 using JobPortal.Infrastructure.Data;
 using JobPortal.Infrastructure.Global;
 using MediatR;

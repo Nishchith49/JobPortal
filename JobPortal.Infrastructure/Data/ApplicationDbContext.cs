@@ -12,6 +12,7 @@ namespace JobPortal.Infrastructure.Data
         public DbSet<ClientCompany> ClientCompanies { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Applicant> Applicants { get; set; }
+        public DbSet<Course> Courses { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
@@ -28,6 +29,7 @@ namespace JobPortal.Infrastructure.Data
             modelBuilder.Entity<Applicant>().HasQueryFilter(x => !x.IsDeleted);
             modelBuilder.Entity<ClientCompany>().HasQueryFilter(x => !x.IsDeleted);
             modelBuilder.Entity<Job>().HasQueryFilter(x => !x.IsDeleted);
+            modelBuilder.Entity<Course>().HasQueryFilter(x => !x.IsDeleted);
 
             modelBuilder.Entity<ClientCompany>()
                 .HasMany(c => c.Jobs)

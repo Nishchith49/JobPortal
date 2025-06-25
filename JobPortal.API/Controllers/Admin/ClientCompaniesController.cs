@@ -45,6 +45,13 @@ namespace JobPortal.API.Controllers.Admin
         }
 
 
+        [HttpPut("[action]")]
+        public async Task<APIResponse> EnableOrDisableClientCompany(EnableOrDisableClientCompanyCommand command)
+        {
+            return await _mediator.Send(command);
+        }
+
+
         [HttpDelete("[action]")]
         public async Task<APIResponse> DeleteClientCompany(Guid id)
         {

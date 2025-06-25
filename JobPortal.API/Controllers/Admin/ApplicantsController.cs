@@ -1,5 +1,4 @@
-﻿using JobPortal.AJobPortal.Application.Features.Applicants.Commands;
-using JobPortal.Application.Features.Applicants.Commands;
+﻿using JobPortal.Application.Features.Applicants.Commands;
 using JobPortal.Application.Features.Applicants.Models;
 using JobPortal.Application.Features.Applicants.Queries;
 using JobPortal.Infrastructure.Global;
@@ -54,7 +53,7 @@ namespace JobPortal.API.Controllers.Admin
 
 
         [HttpDelete("[action]")]
-        public async Task<APIResponse> DeleteJob(Guid id)
+        public async Task<APIResponse> DeleteApplicant(Guid id)
         {
             return await _mediator.Send(new DeleteApplicantCommand(id));
         }

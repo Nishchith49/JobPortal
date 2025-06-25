@@ -16,7 +16,7 @@ namespace JobPortal.Application.Features.Jobs.Handlers
 
         public async Task<APIResponse> Handle(EnableOrDisableJobCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _context.Jobs.FindAsync(request.Id);
+            var entity = await _context.Jobs.FindAsync(request.Id, cancellationToken);
             if (entity == null)
                 return new(ResponseConstants.InvalidId, 400);
 

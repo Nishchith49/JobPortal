@@ -18,6 +18,8 @@
         public const string CompanyNotFound = "Client company not found.";
         
         public const string DuplicateJob = "A job with the same title and location already exists for this company.";
+
+        public const string DuplicateCourse = "A course with the same title already exists.";
     }
 
     public static class S3Directories
