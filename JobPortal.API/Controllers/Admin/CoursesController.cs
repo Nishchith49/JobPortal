@@ -32,7 +32,7 @@ namespace JobPortal.API.Controllers.Admin
 
 
         [HttpPost("[action]")]
-        public async Task<APIResponse> CreateCourse(CreateCourseCommand command)
+        public async Task<APIResponse> AddCourse(CreateCourseCommand command)
         {
             return await _mediator.Send(command);
         }
