@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace JobPortal.Application.Features.DropDowns.Queries
 {
-    public class GetJobDropDownQuery : IRequest<List<DropDownModel>>
+    public class GetJobDropDownQuery : IRequest<List<JobDropDownModel>>
     {
         [JsonProperty("clientCompanyId")]
         public Guid? ClientCompanyId { get; set; }

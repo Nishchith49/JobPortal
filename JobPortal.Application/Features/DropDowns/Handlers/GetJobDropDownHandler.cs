@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JobPortal.Application.Features.DropDowns.Handlers
 {
-    internal class GetJobDropDownHandler : IRequestHandler<GetJobDropDownQuery, List<DropDownModel>>
+    internal class GetJobDropDownHandler : IRequestHandler<GetJobDropDownQuery, List<JobDropDownModel>>
     {
         private readonly ApplicationDbContext _context;
 
@@ -15,16 +15,17 @@ namespace JobPortal.Application.Features.DropDowns.Handlers
             _context = context;
         }
 
-        public async Task<List<DropDownModel>> Handle(GetJobDropDownQuery request, CancellationToken cancellationToken)
+        public async Task<List<JobDropDownModel>> Handle(GetJobDropDownQuery request, CancellationToken cancellationToken)
         {
-            return await _context.Jobs
+            return await _context.Jobs 
                                  .Where(x => request.ClientCompanyId == null ||
                                              x.ClientCompanyId == request.ClientCompanyId)
                                  .OrderBy(x => x.Title)
-                                 .Select(x => new DropDownModel
+                                 .Select(x => new JobDropDownModel
                                  {
-                                     Label = x.Title,
-                                     Value = x.Id
+                                     ClientCompanyName = x.ClientCompany.CompanyName,
+                                     JobTitle = x.Title,
+                                     Id = x.Id
                                  }).ToListAsync(cancellationToken);
         }
     }

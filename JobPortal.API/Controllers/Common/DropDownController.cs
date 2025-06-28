@@ -24,7 +24,7 @@ namespace JobPortal.API.Controllers.Common
 
 
         [HttpGet("[action]")]
-        public async Task<List<DropDownModel>> GetJobDropDownQuery(Guid? clientCompanyId)
+        public async Task<List<JobDropDownModel>> GetJobDropDown(Guid? clientCompanyId)
         {
             return await _mediator.Send(new GetJobDropDownQuery(clientCompanyId));
         }
