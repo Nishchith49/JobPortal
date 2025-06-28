@@ -34,6 +34,6 @@ namespace JobPortal.Domain.Entities
 
         [ForeignKey(nameof(JobId))]
         [InverseProperty(nameof(Job.Applicants))]
-        public Job? Job { get; set; }
+        public Job Job { get; set; } = null!;
     }
 }

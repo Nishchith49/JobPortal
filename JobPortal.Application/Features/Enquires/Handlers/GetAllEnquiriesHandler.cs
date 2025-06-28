@@ -19,6 +19,11 @@ namespace JobPortal.Application.Features.Enquires.Handlers
         public async Task<PagedResponse<List<EnquiryModel>>> Handle(GetAllEnquiriesQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Enquiries
+                                       .Where(x => string.IsNullOrWhiteSpace(request.FormattedSearchString()) ||
+                                                   x.Name.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
+                                                   x.Email.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
+                                                   x.Phone.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
+                                                   x.Subject.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()))
                                        .GroupBy(x => 1)
                                        .Select(x => new PagedResponseWithQuery<List<EnquiryModel>>
                                        {

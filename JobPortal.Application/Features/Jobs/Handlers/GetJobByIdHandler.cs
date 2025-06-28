@@ -22,6 +22,7 @@ namespace JobPortal.Application.Features.Jobs.Handlers
                                        .Select(x => new JobModel
                                        {
                                            Id = x.Id,
+                                           ClientCompanyName = x.ClientCompany.CompanyName,
                                            Title = x.Title,
                                            Description = x.Description,
                                            Location = x.Location,

@@ -22,6 +22,8 @@ namespace JobPortal.Application.Features.Applicants.Handlers
                                        .Select(x => new ApplicantModel
                                        {
                                            Id = x.Id,
+                                           ClientCompanyName = x.Job.ClientCompany.CompanyName,
+                                           JobTitle = x.Job.Title,
                                            FullName = x.FullName,
                                            Email = x.Email,
                                            Phone = x.Phone,

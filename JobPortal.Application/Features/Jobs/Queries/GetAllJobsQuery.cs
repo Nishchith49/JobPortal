@@ -7,6 +7,9 @@ namespace JobPortal.Application.Features.Jobs.Queries
 {
     public class GetAllJobsQuery : PagedResponseInput, IRequest<PagedResponse<List<JobModel>>>
     {
+        [JsonProperty("clientCompanyId")]
+        public Guid? ClientCompanyId { get; set; }
+
         [JsonProperty("skills")]
         public string Skills { get; set; } = string.Empty;
 

@@ -2,6 +2,7 @@
 using JobPortal.Application.Features.Accounts.Models;
 using JobPortal.Application.Features.DropDowns.Models;
 using JobPortal.Application.Features.DropDowns.Queries;
+using JobPortal.Domain.Entities;
 using JobPortal.Infrastructure.Global;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +24,9 @@ namespace JobPortal.API.Controllers.Common
 
 
         [HttpGet("[action]")]
-        public async Task<List<DropDownModel>> GetJobDropDownQuery()
+        public async Task<List<DropDownModel>> GetJobDropDownQuery(Guid? clientCompanyId)
         {
-            return await _mediator.Send(new GetJobDropDownQuery());
+            return await _mediator.Send(new GetJobDropDownQuery(clientCompanyId));
         }
     }
 }

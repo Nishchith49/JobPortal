@@ -5,6 +5,12 @@ namespace JobPortal.Application.Features.Applicants.Models
 {
     public class ApplicantModel : UpdateApplicantCommand
     {
+        [JsonProperty("clientCompanyName")]
+        public string ClientCompanyName { get; set; } = string.Empty;
+
+        [JsonProperty("jobTitle")]
+        public string JobTitle { get; set; } = string.Empty;
+
         [JsonProperty("appliedDate")]
         public DateTime AppliedDate { get; set; }
 

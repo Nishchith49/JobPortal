@@ -19,6 +19,8 @@ namespace JobPortal.Application.Features.ClientCompanies.Handlers
         public async Task<PagedResponse<List<ClientCompanyModel>>> Handle(GetAllClientCompaniesQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.ClientCompanies
+                                       .Where(x => string.IsNullOrWhiteSpace(request.FormattedSearchString()) ||
+                                                   x.CompanyName.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()))
                                        .GroupBy(x => 1)
                                        .Select(x => new PagedResponseWithQuery<List<ClientCompanyModel>>
                                        {

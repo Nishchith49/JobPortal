@@ -19,6 +19,14 @@ namespace JobPortal.Application.Features.Applicants.Handlers
         public async Task<PagedResponse<List<ApplicantModel>>> Handle(GetAllApplicantsQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Applicants
+                                       .Where(x => request.ClientCompanyId == null || 
+                                                   x.Job.ClientCompanyId == request.ClientCompanyId)
+                                       .Where(x => request.JobId == null ||
+                                                   x.Job.Id == request.JobId)
+                                       .Where(x => string.IsNullOrWhiteSpace(request.FormattedSearchString()) || 
+                                                   x.FullName.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
+                                                   x.Email.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()) ||
+                                                   x.Phone.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()))
                                        .GroupBy(x => 1)
                                        .Select(x => new PagedResponseWithQuery<List<ApplicantModel>>
                                        {
@@ -26,6 +34,8 @@ namespace JobPortal.Application.Features.Applicants.Handlers
                                            Data = x.Select(x => new ApplicantModel
                                            {
                                                Id = x.Id,
+                                               ClientCompanyName = x.Job.ClientCompany.CompanyName,
+                                               JobTitle = x.Job.Title,
                                                FullName = x.FullName,
                                                Email = x.Email,
                                                Phone = x.Phone,
@@ -43,7 +53,7 @@ namespace JobPortal.Application.Features.Applicants.Handlers
                                            .ToList()
                                        })
                                        .FirstOrDefaultAsync(cancellationToken);
-
+            
             return new(ResponseConstants.Success, 200, entity?.Data, request.PageIndex, request.PageSize, entity?.TotalRecords ?? 0);
         }
     }

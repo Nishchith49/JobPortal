@@ -18,6 +18,8 @@ namespace JobPortal.Application.Features.DropDowns.Handlers
         public async Task<List<DropDownModel>> Handle(GetJobDropDownQuery request, CancellationToken cancellationToken)
         {
             return await _context.Jobs
+                                 .Where(x => request.ClientCompanyId == null ||
+                                             x.ClientCompanyId == request.ClientCompanyId)
                                  .OrderBy(x => x.Title)
                                  .Select(x => new DropDownModel
                                  {

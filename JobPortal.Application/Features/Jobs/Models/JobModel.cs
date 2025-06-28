@@ -5,6 +5,9 @@ namespace JobPortal.Application.Features.Jobs.Models
 {
     public class JobModel : UpdateJobCommand
     {
+        [JsonProperty("clientCompanyName")]
+        public string ClientCompanyName { get; set; } = string.Empty;
+
         [JsonProperty("isActive")]
         public bool IsActive { get; set; }
 

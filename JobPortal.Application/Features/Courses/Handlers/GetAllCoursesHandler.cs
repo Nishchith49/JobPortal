@@ -21,6 +21,8 @@ namespace JobPortal.Application.Features.Courses.Handlers
         public async Task<PagedResponse<List<CourseModel>>> Handle(GetAllCoursesQuery request, CancellationToken cancellationToken)
         {
             var entity = await _context.Courses
+                                       .Where(x => string.IsNullOrWhiteSpace(request.FormattedSearchString()) ||
+                                                   x.Title.ToLower().Replace(" ", string.Empty).Contains(request.FormattedSearchString()))
                                        .GroupBy(x => 1)
                                        .Select(x => new PagedResponseWithQuery<List<CourseModel>>
                                        {
