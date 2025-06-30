@@ -30,6 +30,9 @@ namespace JobPortal.Application.Features.Jobs.Commands
         [JsonProperty("expiryDate")]
         public DateTime ExpiryDate { get; set; }
 
+        [JsonProperty("education")]
+        public string Education { get; set; } = string.Empty;
+
         [JsonProperty("clientCompanyId")]
         public Guid ClientCompanyId { get; set; }
     }

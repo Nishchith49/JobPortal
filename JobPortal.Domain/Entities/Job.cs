@@ -34,6 +34,9 @@ namespace JobPortal.Domain.Entities
         [Column("expiry_date")]
         public DateTime ExpiryDate { get; set; }
 
+        [Column("education")]
+        public string Education { get; set; } = string.Empty;
+
         [Column("client_company_id")]
         public Guid ClientCompanyId { get; set; }
 
