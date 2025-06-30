@@ -5,6 +5,9 @@ namespace JobPortal.Application.Features.Courses.Models
 {
     public class CourseModel : UpdateCourseCommand
     {
+        [JsonProperty("isActive")]
+        public bool IsActive { get; set; }
+
         [JsonProperty("createdDate")]
         public DateTime CreatedDate { get; set; }
 

@@ -33,6 +33,7 @@ namespace JobPortal.Application.Features.Courses.Handlers
                                                Title = x.Title,
                                                Description = x.Description,
                                                DurationInWeeks = x.DurationInWeeks,
+                                               IsActive = x.IsActive,
                                                CreatedDate = x.CreatedDate,
                                                LastUpdatedDate = x.UpdatedDate
                                            })

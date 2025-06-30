@@ -3,7 +3,7 @@
 namespace JobPortal.Domain.Entities
 {
     [Table("course")]
-    public class Course : IdAndDatesWithIsDeleted
+    public class Course : IdAndDatesWithIsActiveAndIsDeleted
     {
         [Column("title")]
         public string Title { get; set; } = string.Empty;

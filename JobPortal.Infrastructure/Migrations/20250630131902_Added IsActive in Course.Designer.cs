@@ -4,6 +4,7 @@ using JobPortal.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobPortal.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250630131902_Added IsActive in Course")]
+    partial class AddedIsActiveinCourse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,7 +90,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasIndex("JobId");
 
-                    b.ToTable("applicant", (string)null);
+                    b.ToTable("applicant");
                 });
 
             modelBuilder.Entity("JobPortal.Domain.Entities.ClientCompany", b =>
@@ -157,7 +160,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("client_company", (string)null);
+                    b.ToTable("client_company");
                 });
 
             modelBuilder.Entity("JobPortal.Domain.Entities.Course", b =>
@@ -199,7 +202,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("course", (string)null);
+                    b.ToTable("course");
                 });
 
             modelBuilder.Entity("JobPortal.Domain.Entities.Enquiry", b =>
@@ -248,7 +251,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("enquiry", (string)null);
+                    b.ToTable("enquiry");
                 });
 
             modelBuilder.Entity("JobPortal.Domain.Entities.Job", b =>
@@ -324,7 +327,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasIndex("ClientCompanyId");
 
-                    b.ToTable("job", (string)null);
+                    b.ToTable("job");
                 });
 
             modelBuilder.Entity("JobPortal.Domain.Entities.Media", b =>
@@ -367,7 +370,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("media", (string)null);
+                    b.ToTable("media");
                 });
 
             modelBuilder.Entity("JobPortal.Domain.Entities.RefreshToken", b =>
@@ -400,7 +403,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("refresh_token", (string)null);
+                    b.ToTable("refresh_token");
                 });
 
             modelBuilder.Entity("JobPortal.Domain.Entities.Role", b =>
@@ -417,7 +420,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("role", (string)null);
+                    b.ToTable("role");
 
                     b.HasData(
                         new
@@ -468,7 +471,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("user", (string)null);
+                    b.ToTable("user");
 
                     b.HasData(
                         new
@@ -502,7 +505,7 @@ namespace JobPortal.Infrastructure.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("user_role", (string)null);
+                    b.ToTable("user_role");
 
                     b.HasData(
                         new
